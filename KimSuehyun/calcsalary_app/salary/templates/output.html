@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container p-2">
+  <div class="container text-secondary">
+    <p class="d-flex justify-content-around">
+      <span class="category">給与</span>
+      <span class="amount">{{ salary }} 円</span>
+    </p>
+    <p class="d-flex justify-content-around">
+      <span class="category">税額</span>
+      <span class="amount">{{ tax }} 円</span>
+    </p>
+  </div>
+  <div class="font-weight-bold bg-light d-flex justify-content-around border-top border-dark-subtle pt-2">
+    <h5 class="fw-bold result-title">支給額</h5>
+    <h5 class="fw-bold result-amount text-primary">{{ after_tax }} 円</h5>
+  </div>
+</div>
+<div class="d-flex justify-content-end">
+  <button type="submit" onclick = "location.href = '/'" class="btn btn-secondary">戻る</button>
+</div>
+{% endblock %}

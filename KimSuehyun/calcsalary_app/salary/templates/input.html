@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block body %} 
+<form action="{{ url_for('show_output') }}" method="get">
+  <div class="form-group">
+    <label for="inputTitle" class="form-label" id="label">給与</label>
+    {% if not input_data %}
+    <input type="number" class="form-control" id="inputTitle" name="salary"/>
+    {% else %}
+    <input type="number" class="form-control" id="inputTitle" name="salary" value="{{ input_data }}"/>
+    {% endif %}
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-secondary">計算する</button>
+  </div>
+</form>
+{% endblock %}

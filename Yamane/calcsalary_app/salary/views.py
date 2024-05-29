@@ -11,10 +11,11 @@ def show_output():
   if request.method == 'GET':
     salary = request.args.get('salary')
     session['input_data'] = salary
+    salary=float(salary)
     if salary <= 1000000:
-          tax = 100000
+        tax = salary*0.1
     else:
-          tax = round((salary-1000000)*0.2 + 100000)
-          after_tax = salary - tax
-    return render_template('output.html', salary=salary, tax=tax, after_tax=after_tax)
-    return redirect(url_for('show_home'))
+        tax = round((salary-1000000)*0.2 + 100000)
+    pay = salary - tax
+    return render_template('output.html', salary=salary, tax=tax, pay=pay)
+  return redirect(url_for('show_home'))

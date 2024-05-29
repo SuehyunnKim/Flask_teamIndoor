@@ -1,14 +1,6 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog.__init__ import app
 
-# URLにアクセスがあった時
-@app.route('/')
-def show_entries():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    # templateフォルダ内にhtmlファイルが必ずあるため、template/の指定は不要
-    return render_template('entries/index.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

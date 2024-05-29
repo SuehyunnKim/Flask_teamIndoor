@@ -1,28 +1,33 @@
-from flask import request, redirect, url_for, render_template, flash, session
+from flask import request, redirect, url_for, render_template, flash, session, get_flashed_messages
 from salary import app
 
 # URLにアクセスがあった時
 # input.htmlを返す
 @app.route('/')
 def input():
+    init_val = session.get("input_value", None)
     # templateフォルダ内にhtmlファイルが必ずあるため、template/の指定は不要
-    return render_template('input.html')
+    return render_template('input.html', init_val=init_val)
 
 # output 画面を出す
 @app.route('/output', methods=['GET', 'POST'])
-def login():
+def output():
     if request.method == 'POST':
         # 給与額をsalary変数に代入
         # salary = int(request.form['salary'])
+        session["input_value"] = request.form["salary"]
+
         # 必須チェック
         if not request.form['salary']:
             flash("給与が未入力です。")
-            return redirect(url_for('input'))
+            # return redirect(url_for('input'))
         elif len(request.form['salary']) >= 10:
             flash("最大10桁まで入力可能です。")
-            return redirect(url_for('input'))
+            # return redirect(url_for('input'))
         elif int(request.form['salary']) < 0:
             flash("給与はマイナス値は入力できません。")
+            # return redirect(url_for('input'))
+        if get_flashed_messages():
             return redirect(url_for('input'))
 
         # 給与計算

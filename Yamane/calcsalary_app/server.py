@@ -1,5 +1,4 @@
-from Yamane.calcsalary_app.salary import app
-from flask import Flask
+from salary import app
 
 if __name__=='__main__':
     app.run()

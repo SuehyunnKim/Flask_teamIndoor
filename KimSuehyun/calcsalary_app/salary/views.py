@@ -23,7 +23,7 @@ def show_output():
         flash('月収88000円未満は、非課税です')
       else:
         if salary <= 1000000:
-          tax = 100000
+          tax = salary * 0.1
         else:
           tax = round((salary-1000000)*0.2 + 100000)
         after_tax = salary - tax

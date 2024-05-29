@@ -1,11 +1,11 @@
 from flask import request, redirect, url_for, render_template, flash, session
-from flask_blog import app
+from flask_blog.__init__ import app
 
 # URLにアクセスがあった時
 @app.route('/')
 def show_entries():
     if not session.get('logged_in'):
-        return redirect('/login')
+        return redirect(url_for('login'))
     # templateフォルダ内にhtmlファイルが必ずあるため、template/の指定は不要
     return render_template('entries/index.html')
 
@@ -19,11 +19,11 @@ def login():
         else:
             session['logged_in'] = True
             flash('ログインしました')
-            return redirect('/')
+            return redirect(url_for('show_entries'))
     return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('ログアウトしました')
-    return redirect('/')
+    return redirect(url_for('show_entries'))

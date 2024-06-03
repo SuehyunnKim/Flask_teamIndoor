@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="form-group p-3 mb-2 bg-light text-dark rounded shadow" style="width: 500px; height: 270px;">
+  <div class="progress">
+    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ (attempted+1)*10 }}%" aria-valuenow="{{ (attempted+1)*10 }}" aria-valuemin="10" aria-valuemax="100"></div>
+  </div>
+  <form class="form-control-lg d-flex flex-column justify-content-around" action="{{ url_for('nextAnswer') }}" methods="POST">
+    <p>
+      <input type="text" name="score" hidden value="{{ score }}">
+      <input type="text" name="questionNum" hidden value="{{ questionNum }}">
+      <input type="text" name="attempted" hidden value="{{ attempted }}">
+      <input type="text" name="answer" hidden value="{{ answer }}">
+      <input type="text" name="isCorrect" hidden value="{{ isCorrect }}">
+      <p class="text-left font-weight-bold">{{ attempted + 1 }}. {{ question }} </p>
+      <p>私の答え："{{ entered }}"</p>
+      <p>正解："{{ answer }}"</p>
+      <br>
+      {% if isCorrect=='正解' %}
+      <B class="text-center" style="color: blue;">{{ isCorrect }}</B>
+      {% else %}
+      <B class="text-center" style="color: red;">{{ isCorrect }}</B>
+      {% endif %}
+    </p>
+    <button type="submit" class="btn btn-lg btn-dark mt-5 mx-auto" style="width: 50%;" autofocus>Next</button>
+  </form>
+</div>
+{% endblock %}

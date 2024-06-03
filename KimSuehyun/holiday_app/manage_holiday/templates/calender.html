@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div id="calendar"></div>
+<script>
+  let calendarEl = document.getElementById('calendar');
+
+  let calendar = new FullCalendar.Calendar(calendarEl, {
+    events: [
+      {% for data in holiday %}
+      {
+        title: '{{ data.holi_text }}',
+        start: '{{ data.holi_date }}',
+      },
+      {% endfor %}
+    ]
+  });
+
+  calendar.render();
+</script>
+<br><br>
+<div class="d-flex justify-content-end">
+  <button type="submit" onclick = "location.href = '/'" class="btn btn-secondary">戻る</button>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="form-group p-3 mb-2 bg-light text-dark rounded shadow" style="width: 500px; height: 250px;">
+  <div class="progress">
+    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ (attempted+1)*10 }}%" aria-valuenow="{{ (attempted+1)*10 }}" aria-valuemin="10" aria-valuemax="100"></div>
+  </div>
+  <form class="form-control-lg d-flex flex-column justify-content-around" action="{{ url_for('nextQuestion') }}" methods="POST">
+    <p>
+      <input type="text" name="score" hidden value="{{ score }}">
+      <input type="text" name="questionNum" hidden value="{{ questionNum }}">
+      <input type="text" name="attempted" hidden value="{{ attempted }}">
+      <p class="text-left font-weight-bold">{{ attempted + 1 }}. {{ question }} </p>
+      <br>
+      <p class="text-left font-weight-light text-secondary" style="font-size: 15px;">
+        上の日本語が意味する英単語を入力してください😈
+      </p>
+      <input required type="text" class="p-1" name="question" autocomplete="off" autofocus><br>
+    </p>
+    <button type="submit" class="btn btn-lg btn-dark mt-5 mx-auto" style="width: 50%;">Next</button>
+  </form>
+</div>
+{% endblock %}

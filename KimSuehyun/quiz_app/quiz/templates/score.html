@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="form-group p-3 mb-2 bg-light text-dark rounded shadow" style="width: 500px; height: 250px;">
+  <form class="form-control-lg d-flex flex-column justify-content-around" action="/" method="POST">
+    <h1>お疲れ様でした！</h1>
+    <p>あなたのスコアは {{ percent }} 点です！ ( {{ score }} / {{ attempted+1 }} )</p>
+    <br><br>
+    <button type="submit" class="btn btn-lg btn-dark" autofocus>Start the Quiz Again</button>
+  </form>
+</div>
+{% endblock %}

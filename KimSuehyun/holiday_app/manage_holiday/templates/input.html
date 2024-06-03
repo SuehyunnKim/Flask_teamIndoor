@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<form action="{{ url_for('admin') }}" method="post">
+  <div class="form-group">
+    <label for="InputDate">祝日 日付</label>
+    <input type="date" class="form-control" name="holiday" id="InputDate">
+  </div>
+
+  <div class="form-group">
+    <label for="InputText">祝日 テキスト</label>
+    <input type="text" class="form-control" name="holiday_text" id="InputText">
+  </div>
+
+  <div class="btn-group">
+    <button type="submit" name="option" value="insert_update" class="btn btn-primary rounded">新規作成・更新</button>
+    <button type="submit" name="option" value="delete" class="btn btn-danger rounded" style="margin-left: 10px;">削除</button>
+  </div>
+</form>
+
+<div class="btn-group mt-5">
+  <button type="button" class="btn btn-secondary rounded" onclick="location.href='/calender' ">カレンダーを表示</button>
+  <button type="button" class="btn btn-secondary rounded" onclick="location.href='/list' " style="margin-left: 10px;">一覧出力</button>
+</div>
+{% endblock %}

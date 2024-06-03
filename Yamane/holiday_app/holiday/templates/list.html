@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<table class="table">
+    <thead>
+        <tr class="table-primary">
+            <th scope="col">祝日</th>
+            <th scope="col">テキスト</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for holiday in holidays %}
+        <tr>
+            <td>{{ holiday.holi_date }}</td>
+            <td>{{ holiday.holi_text }}</td>
+        </tr>
+    </tbody>
+{% else %}
+登録がありません
+{% endfor %}
+</table>
+
+<form action="/" method="GET">
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">戻る</button>
+    </div>
+</form>
+<br>
+<br>
+{% endblock %}

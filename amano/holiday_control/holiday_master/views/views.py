@@ -24,7 +24,8 @@ def input():
             db.session.add(holidaydb)
         # 更新
         else:
-            db.session.update(holidaydb)
+            holidaydb = Holiday.query.filter_by(holi_date=holiday).first()
+            holidaydb.holi_text = holiday_text
         db.session.commit()
         holiday = request.form['holiday']
         holiday_text = request.form['holiday_text']

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="font-weight-bold bg-light d-flex justify-content-between border-top border-dark-subtle pt-2 px-5">
+  <h5 class="fw-bold">祝日</h5>
+  <h5 class="fw-bold">テキスト</h5>
+</div>
+<ul class="list-group list-group-flush">
+  {% for data in holiday %}
+  <div class="card">
+    <div class="card-body　 d-flex justify-content-between px-5">
+      <span class="card-title">{{ data.holi_date }}</span>
+      <span class="card-title">{{ data.holi_text }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</ul>
+<br><br>
+<div class="d-flex justify-content-end">
+  <button type="submit" onclick = "location.href = '/'" class="btn btn-secondary">戻る</button>
+</div>
+{% endblock %}
